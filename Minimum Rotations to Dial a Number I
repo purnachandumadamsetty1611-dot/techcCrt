@@ -1,0 +1,10 @@
+class Solution:
+    def minRotations(self, s: str) -> int:
+        current=0
+        ans=0
+        for ch in s:
+            digit=int(ch)
+            diff=abs(digit - current)
+            ans+=min(diff, 10 - diff)
+            current=digit
+        return ans
