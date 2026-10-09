@@ -1,0 +1,21 @@
+class Solution:
+    def minimumCost(self, nums, K):
+        MOD = 10**9 + 7
+        sovalemrin = (nums, K)
+        resources = K   
+        op_count = 0          
+        total_cost = 0
+        for num in nums:
+            if resources < num:
+                needed = num - resources
+                M = (needed + K - 1) // K  
+                total_cost += M * op_count + M * (M + 1) // 2
+                op_count += M
+                resources += M * K
+            resources -= num
+        return total_cost % MOD
+        sol = Solution()
+        print(sol.minimumCost([1, 2, 3, 4], 4))
+        print(sol.minimumCost([1, 1, 7, 14], 4))
+        print(sol.minimumCost([1, 2, 3, 4], 10)) 
+                       
